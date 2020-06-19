@@ -692,17 +692,6 @@ module Distem
         post_json("/global_etchosts", params)
       end
 
-      # Create a new memory limitation
-      # @param [String] vnodename The vnode's name to create
-      # @param [String] mem The required amount of RAM
-      # @param [String] swap The required amount of swap
-      # @param [String] hierarchy The hierarchy where memory controller is mounted (default to v1)
-      # @return [Hash] The memory limitation
-      def vmem_create(vnodename, mem, swap = nil, hierarchy = 'v1')
-        desc = { :mem => mem, :swap => swap, :hierarchy => hierarchy}
-        post_json("/vnodes/#{CGI.escape(vnodename)}/vmem", { :desc => desc })
-      end
-
       # Update a memory limitation
       # @param [String] vnodename The vnode's name to update
       # @param [Hash] desc The memory limitation description
